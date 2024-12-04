@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+.app-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.delete-btn {
+  background-color: rgb(159, 37, 37);
+  color: white;
+  padding: 0.425rem 0.625rem;
+  border: none;
+  border-radius: 2px;
+}
+
+.add-btn {
+  padding: 0.425rem 0.625rem;
+  border: 1px solid blue;
+  border-radius: 2px;
+}
