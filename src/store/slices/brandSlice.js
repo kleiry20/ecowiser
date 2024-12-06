@@ -5,6 +5,7 @@ import { brandsData } from "../data/brandsData";
 
 const initialState = {
   brands: brandsData,
+  searchTerm: "",
 };
 
 // sending image to backend
@@ -42,8 +43,20 @@ const brandSlice = createSlice({
         (brand) => brand.id !== action.payload
       );
     },
+    setBrands: (state, action) => {
+      state.brands = action.payload;
+    },
+    setBrandSearchTerm: (state, action) => {
+      state.searchTerm = action.payload; // Update local search term
+    },
   },
 });
 
-export const { addBrand, updateBrand, deleteBrand } = brandSlice.actions;
+export const {
+  addBrand,
+  updateBrand,
+  deleteBrand,
+  setBrands,
+  setBrandSearchTerm,
+} = brandSlice.actions;
 export default brandSlice.reducer;

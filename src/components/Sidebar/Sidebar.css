@@ -11,18 +11,15 @@
   text-align: center;
 }
 
-.option-list {
+.header-line {
+  position: absolute;
+  top: 4.2rem;
+  left: 7.5rem;
 }
 
-.option-list-heading {
-  text-transform: uppercase;
+.header-line-div {
+  width: 2.4rem;
+  border-bottom: 7px solid #6366f1;
 }
 
-.option-values {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  list-style-type: none;
-  margin-left: 2rem;
-  margin-top: 1rem;
-}
+/* hover svg color */

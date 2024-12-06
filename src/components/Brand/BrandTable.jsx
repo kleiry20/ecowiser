@@ -5,10 +5,10 @@ import { deleteBrand, updateBrand } from "../../store/slices/brandSlice";
 
 const BrandTable = (props) => {
   const brands = useSelector((state) => state.brand.brands);
-  const { showForm, setShowForm, setSelectedBrand } = props;
+  const { filteredBrands, showForm, setShowForm, setSelectedBrand } = props;
   const dispatch = useDispatch();
 
-  console.log("brand slice in tbale", brands);
+  console.log('filteredBrands', filteredBrands)
 
   return (
     <div className="p-8 bg-white">
@@ -25,7 +25,58 @@ const BrandTable = (props) => {
           </tr>
         </thead>
         <tbody>
-          {brands.map((brand) => (
+          {filteredBrands ? (
+            filteredBrands.map((brand) => (
+              <tr className="h-6 text-center max-h-6" key={brand.name}>
+                <td>
+                  <input type="checkbox" />
+                </td>
+                <td>
+                  <Link
+                    to={`/brands/${brand.id}`}
+                    className="text-blue-500 hover:underline"
+                  >
+                    {brand.name}
+                  </Link>
+                </td>
+
+                <td>{brand.description}</td>
+                <td>
+                  <div className="flex justify-center h-20">
+                    <img
+                      className="object-fill w-24 h-auto"
+                      src={brand.logo}
+                      alt={`${brand.name} Logo`}
+                    />
+                    {/* <img
+                  src={`http://127.0.0.1:8000${brand.logo}` || brand.logo}
+                  alt="Brand Logo"
+                /> */}
+                  </div>
+                </td>
+                <td>
+                  <div className="flex justify-center gap-4">
+                    <button
+                      className="delete-btn "
+                      onClick={() => dispatch(deleteBrand(brand.id))}
+                    >
+                      Delete
+                    </button>
+                    <button
+                      className="update-btn"
+                      onClick={() => {
+                        setShowForm(!showForm);
+                        setSelectedBrand(brand);
+                        dispatch(updateBrand(brand.id));
+                      }}
+                    >
+                      Update
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ))
+          ) : (
             <tr className="h-6 text-center max-h-6" key={brand.name}>
               <td>
                 <input type="checkbox" />
@@ -38,7 +89,6 @@ const BrandTable = (props) => {
                   {brand.name}
                 </Link>
               </td>
-
               <td>{brand.description}</td>
               <td>
                 <div className="flex justify-center h-20">
@@ -47,10 +97,6 @@ const BrandTable = (props) => {
                     src={brand.logo}
                     alt={`${brand.name} Logo`}
                   />
-                  {/* <img
-                  src={`http://127.0.0.1:8000${brand.logo}` || brand.logo}
-                  alt="Brand Logo"
-                /> */}
                 </div>
               </td>
               <td>
@@ -74,7 +120,7 @@ const BrandTable = (props) => {
                 </div>
               </td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
     </div>
