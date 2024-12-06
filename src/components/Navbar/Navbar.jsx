@@ -7,14 +7,14 @@ import SearchIcon from "../../assets/search.svg";
 export const Navbar = () => {
   return (
     <header className="navbar">
-      <input
-        className="w-1/5 border-2 border-solid rounded-md navbar-search"
-        placeholder="Search something here"
-      />
-
-      {/* <form class="nosubmit">
-        <input class="nosubmit" type="search" placeholder="Search..." />
-      </form> */}
+      <div className="flex w-1/4 gap-2 p-2 border border-gray-300 rounded-md">
+        <img className="w-5" src={SearchIcon} alt="" />
+        <input
+          type="text"
+          placeholder="Search anything here..."
+          className="w-full text-sm font-light"
+        />
+      </div>
 
       <div className="navbar-info">
         <a href="">

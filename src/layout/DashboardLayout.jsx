@@ -10,8 +10,10 @@ const DashboardLayout = () => {
       <Sidebar />
       <div className="app-content">
         <Navbar />
-        <BreadCrumb />
-        <Outlet />
+        <div className="flex flex-col gap-4 p-5 bg-gray-100">
+          <BreadCrumb />
+          <Outlet />
+        </div>
       </div>
     </div>
   );

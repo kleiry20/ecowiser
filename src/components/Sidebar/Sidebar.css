@@ -1,10 +1,8 @@
 .sidebar {
   width: 15%;
-  border: 1px solid black;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  /* justify-content: space-between; */
   padding: 2rem 1rem;
 }
 
@@ -23,7 +21,6 @@
 .option-values {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   gap: 1rem;
   list-style-type: none;
   margin-left: 2rem;

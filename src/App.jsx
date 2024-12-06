@@ -42,6 +42,7 @@ function App() {
           <Route path="brands" element={<BrandPage />} />
           <Route path="/brands/:brandId" element={<BrandDetail />} />
           <Route path="products" element={<ProductPage />} />
+          <Route path="not-implemented" element={<PageNotFound />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />{" "}
       </Routes>

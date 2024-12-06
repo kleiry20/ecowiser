@@ -1,17 +1,16 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 // Async action
-export const loginUser = createAsyncThunk('user/login', async (credentials) => {
-  const response = await fetch('/api/login', {
-    method: 'POST',
+export const loginUser = createAsyncThunk("user/login", async (credentials) => {
+  const response = await fetch("/api/login", {
+    method: "POST",
     body: JSON.stringify(credentials),
   });
   return response.json();
 });
 
-// Slice
 const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState: { isLoggedIn: false, userInfo: null, loading: false },
   reducers: {
     // reducers = Regular reducers for sync actions

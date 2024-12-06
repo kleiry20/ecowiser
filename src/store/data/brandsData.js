@@ -4,14 +4,14 @@ import Chanel from "../../assets/brand-chanel.jpg";
 export const brandsData = [
   {
     id: 1,
-    name: "Brand 1",
-    description: "this is a sample brand",
+    name: "Coffee Express",
+    description: "this is a coffee shop",
     logo: Starbucks,
   },
   {
     id: 2,
-    name: "Brand 2",
-    description: "this is a sample brand",
+    name: "Magic Serums",
+    description: "skincare brand",
     logo: Chanel,
   },
   {
