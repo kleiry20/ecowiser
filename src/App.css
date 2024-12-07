@@ -45,3 +45,9 @@
   border-radius: 10px;
   border: none;
 }
+
+.btn {
+  padding: 0.525rem 0.725rem;
+  font-size: 12px;
+  border-radius: 10px;
+}

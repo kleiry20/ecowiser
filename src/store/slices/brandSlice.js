@@ -47,7 +47,7 @@ const brandSlice = createSlice({
       state.brands = action.payload;
     },
     setBrandSearchTerm: (state, action) => {
-      state.searchTerm = action.payload; // Update local search term
+      state.searchTerm = action.payload;
     },
   },
 });
