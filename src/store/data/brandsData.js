@@ -7,6 +7,7 @@ export const brandsData = [
     name: "Coffee Express",
     description: "this is a coffee shop",
     logo: Starbucks,
+    
   },
   {
     id: 2,

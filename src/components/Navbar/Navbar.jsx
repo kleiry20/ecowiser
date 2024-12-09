@@ -1,8 +1,4 @@
 import React from "react";
-import "./Navbar.css";
-// Search logic for global search
-import { useSelector } from "react-redux";
-
 import BellIcon from "../../assets/bell.svg";
 import ProfileIcon from "../../assets/profile.svg";
 import SearchIcon from "../../assets/search.svg";

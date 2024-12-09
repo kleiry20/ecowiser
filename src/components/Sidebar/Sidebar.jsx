@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Sidebar.css";
 import DashboardIcon from "../../assets/dashboard.svg";
 import ProductsIcon from "../../assets/products.svg";
@@ -10,8 +10,18 @@ import CouponIcon from "../../assets/coupon.svg";
 import ChatIcon from "../../assets/chat.svg";
 import SettingsIcon from "../../assets/settings.svg";
 import LogoutIcon from "../../assets/logout.svg";
+import { useDispatch } from "react-redux";
+import { logout } from "../../store/slices/authSlice";
 
 export const Sidebar = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/login");
+  };
+
   return (
     <aside className="flex flex-col w-1/6 h-full gap-6 px-4 py-8 bg-white border-r">
       <h3 className="text-4xl font-semibold leading-none text-center ">
@@ -84,7 +94,7 @@ export const Sidebar = () => {
           </li>
           <li className="flex items-center gap-6 p-4 pl-8 rounded-lg cursor-pointer hover:bg-indigo-500 hover:text-white">
             <img src={LogoutIcon} className="w-4" alt="" />
-            <Link className="text-sm font-light" to="/not-implemented">
+            <Link className="text-sm font-light" onClick={handleLogout}>
               Logout
             </Link>
           </li>

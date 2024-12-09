@@ -1,8 +1,11 @@
-export const productsData = {
-  name: "",
-  description: "",
-  category: "",
-  price: 0,
-  image: "",
-  brandAssociation: "",
-};
+export const productsData = [
+  {
+    id: 1,
+    name: "Moisturizer",
+    description: "A water-based face cream",
+    category: "skincare",
+    price: 399,
+    image: "",
+    brandAssociation: 2,
+  },
+];

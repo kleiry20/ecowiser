@@ -1,64 +1,74 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteBrand, updateBrand } from "../../store/slices/brandSlice";
+import { deleteProduct, updateProduct } from "../../store/slices/productSlice";
 
-const BrandTable = (props) => {
+const ProductTable = (props) => {
+  const products = useSelector((state) => state.product.products);
   const brands = useSelector((state) => state.brand.brands);
-  const { filteredBrands, showForm, setShowForm, setSelectedBrand } = props;
+  const { filteredProducts, showForm, setShowForm, setSelectedProduct } = props;
   const dispatch = useDispatch();
 
-  console.log("filteredBrands", filteredBrands);
+  // Helper function to get brand name by ID
+  const getBrandNameById = (brandId) => {
+    const brand = brands.find((b) => b.id === brandId);
+    return brand ? brand.name : "Brand Not in List";
+  };
 
   return (
     <div className="p-8 bg-white">
       <table className="w-full bg-white">
         <thead className="w-full bg-gray-200 rounded-md">
           <tr className="border-8 ">
-            <th>
-              <input type="checkbox" />
-            </th>
             <th className="font-normal">Name</th>
             <th className="font-normal">Description</th>
-            <th className="font-normal">Logo</th>
+            <th className="font-normal">Category</th>
+            <th className="font-normal">Price</th>
+            <th className="font-normal">Image</th>
+            <th className="font-normal">Brand Association</th>
             <th className="w-1/5 text-sm font-normal">Actions</th>
           </tr>
         </thead>
         <tbody>
-          {filteredBrands ? (
-            filteredBrands.map((brand) => (
-              <tr className="h-6 text-center max-h-6" key={brand.name}>
-                <td>
-                  <input type="checkbox" />
-                </td>
+          {filteredProducts ? (
+            filteredProducts.map((product) => (
+              <tr className="h-6 text-center max-h-6" key={product.name}>
                 <td>
                   <Link
-                    to={`/brands/${brand.id}`}
+                    to={`/products/${product.id}`}
                     className="text-blue-500 hover:underline"
                   >
-                    {brand.name}
+                    {product.name}
                   </Link>
                 </td>
 
-                <td>{brand.description}</td>
+                <td>{product.description}</td>
+
+                <td>
+                  <Link to={`/products/${product.id}`}>{product.category}</Link>
+                </td>
+                <td>
+                  <Link to={`/products/${product.id}`}>{product.price}</Link>
+                </td>
                 <td>
                   <div className="flex justify-center h-20">
                     <img
                       className="object-fill w-24 h-auto"
-                      src={brand.logo}
-                      alt={`${brand.name} Logo`}
+                      src={product.image}
+                      alt={`${product.name} Logo`}
                     />
-                    {/* <img
-                  src={`http://127.0.0.1:8000${brand.logo}` || brand.logo}
-                  alt="Brand Logo"
-                /> */}
                   </div>
+                </td>
+                <td>
+                  <Link to={`/products/${product.id}`}>
+                    {getBrandNameById(product.brandAssociation)}
+                  </Link>
                 </td>
                 <td>
                   <div className="flex justify-center gap-4">
                     <button
                       className="delete-btn "
-                      onClick={() => dispatch(deleteBrand(brand.id))}
+                      onClick={() => dispatch(deleteProduct(product.id))}
                     >
                       Delete
                     </button>
@@ -66,8 +76,8 @@ const BrandTable = (props) => {
                       className="update-btn"
                       onClick={() => {
                         setShowForm(!showForm);
-                        setSelectedBrand(brand);
-                        dispatch(updateBrand(brand.id));
+                        setSelectedProduct(product);
+                        dispatch(updateProduct(product.id));
                       }}
                     >
                       Update
@@ -77,33 +87,42 @@ const BrandTable = (props) => {
               </tr>
             ))
           ) : (
-            <tr className="h-6 text-center max-h-6" key={brand.name}>
-              <td>
-                <input type="checkbox" />
-              </td>
+            <tr className="h-6 text-center max-h-6" key={product.name}>
               <td>
                 <Link
-                  to={`/brands/${brand.id}`}
+                  to={`/products/${product.id}`}
                   className="text-blue-500 hover:underline"
                 >
-                  {brand.name}
+                  {product.name}
                 </Link>
               </td>
-              <td>{brand.description}</td>
+              <td>{product.description}</td>
+
+              <td>
+                <Link to={`/products/${product.id}`}>{product.category}</Link>
+              </td>
+              <td>
+                <Link to={`/products/${product.id}`}>{product.price}</Link>
+              </td>
               <td>
                 <div className="flex justify-center h-20">
                   <img
                     className="object-fill w-24 h-auto"
-                    src={brand.logo}
-                    alt={`${brand.name} Logo`}
+                    src={product.image}
+                    alt={`${product.name} Logo`}
                   />
                 </div>
+              </td>
+              <td>
+                <Link to={`/products/${product.id}`}>
+                  {getBrandNameById(product.brandAssociation)}
+                </Link>
               </td>
               <td>
                 <div className="flex justify-center gap-4">
                   <button
                     className="delete-btn "
-                    onClick={() => dispatch(deleteBrand(brand.id))}
+                    onClick={() => dispatch(deleteProduct(product.id))}
                   >
                     Delete
                   </button>
@@ -111,8 +130,8 @@ const BrandTable = (props) => {
                     className="update-btn"
                     onClick={() => {
                       setShowForm(!showForm);
-                      setSelectedBrand(brand);
-                      dispatch(updateBrand(brand.id));
+                      setSelectedProduct(product);
+                      dispatch(updateProduct(product.id));
                     }}
                   >
                     Update
@@ -127,4 +146,4 @@ const BrandTable = (props) => {
   );
 };
 
-export default BrandTable;
+export default ProductTable;

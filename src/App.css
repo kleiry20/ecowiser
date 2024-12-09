@@ -19,6 +19,11 @@
   background-color: #f3f4f6;
 }
 
+.navbar-shadow {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
 .delete-btn {
   background-color: rgb(159, 37, 37);
   font-size: 12px;

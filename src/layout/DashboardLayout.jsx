@@ -20,13 +20,3 @@ const DashboardLayout = () => {
 };
 
 export default DashboardLayout;
-
-// Main routes:
-// Use routes like /, /brands, and /products for general pages
-
-// Breadcrumbs:
-// Dashboard > Brands > Brand Name
-// Dashboard > Brands > Brand Name > Product Name (wehn association is needed brand->product)
-
-// Detailed view:
-// Have routes like /brands/:brandId and /products/:productId for detailed views

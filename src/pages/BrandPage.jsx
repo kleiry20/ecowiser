@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setBrandSearchTerm } from "../store/slices/brandSlice";
 
 export const BrandPage = () => {
-  const [showForm, setShowForm] = useState(true);
+  const [showForm, setShowForm] = useState(false);
   // to select the brand to be updated
   const [selectedBrand, setSelectedBrand] = useState(null);
 
